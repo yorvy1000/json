@@ -186,7 +186,7 @@
     "nro_sorteo": "9629",
     "hora_sorteo": "21:30:00",
     "sorteo": "TRIPLE ZULIA C",
-    "numero_ganador": "78"
+    "numero_ganador": "000"
   },
   {
     "fecha_sorteo": "2023-11-11",
@@ -214,7 +214,7 @@
     "nro_sorteo": "9630",
     "hora_sorteo": "22:15:00",
     "sorteo": "ZODIACO DEL ZULIA",
-    "numero_ganador": "23 LIB"
+    "numero_ganador": "111 LIB"
   },
   {
     "fecha_sorteo": "2023-11-11",
