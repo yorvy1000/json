@@ -193,7 +193,7 @@
     "nro_sorteo": "9630",
     "hora_sorteo": "22:15:00",
     "sorteo": "TRIPLE ZULIA A",
-    "numero_ganador": "45"
+    "numero_ganador": "045"
   },
   {
     "fecha_sorteo": "2023-11-11",
