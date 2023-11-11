@@ -186,7 +186,7 @@
     "nro_sorteo": "9629",
     "hora_sorteo": "21:30:00",
     "sorteo": "TRIPLE ZULIA C",
-    "numero_ganador": "000"
+    "numero_ganador": "100"
   },
   {
     "fecha_sorteo": "2023-11-11",
