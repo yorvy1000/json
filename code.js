@@ -169,58 +169,58 @@
   },
   {
     "fecha_sorteo": "2023-11-11",
-    "nro_sorteo": "9628",
-    "hora_sorteo": "19:05:00",
+    "nro_sorteo": "9629",
+    "hora_sorteo": "21:30:00",
     "sorteo": "TRIPLE ZULIA A",
-    "numero_ganador": "93"
+    "numero_ganador": "11"
   },
   {
     "fecha_sorteo": "2023-11-11",
-    "nro_sorteo": "9628",
-    "hora_sorteo": "19:05:00",
+    "nro_sorteo": "9629",
+    "hora_sorteo": "21:30:00",
     "sorteo": "TRIPLE ZULIA B",
-    "numero_ganador": "06"
+    "numero_ganador": "34"
   },
   {
     "fecha_sorteo": "2023-11-11",
-    "nro_sorteo": "9628",
-    "hora_sorteo": "19:05:00",
+    "nro_sorteo": "9629",
+    "hora_sorteo": "21:30:00",
     "sorteo": "TRIPLE ZULIA C",
-    "numero_ganador": "72"
+    "numero_ganador": "78"
   },
   {
     "fecha_sorteo": "2023-11-11",
-    "nro_sorteo": "9628",
-    "hora_sorteo": "19:05:00",
+    "nro_sorteo": "9630",
+    "hora_sorteo": "22:15:00",
     "sorteo": "TRIPLE ZULIA A",
-    "numero_ganador": "693"
+    "numero_ganador": "45"
   },
   {
     "fecha_sorteo": "2023-11-11",
-    "nro_sorteo": "9628",
-    "hora_sorteo": "19:05:00",
+    "nro_sorteo": "9630",
+    "hora_sorteo": "22:15:00",
     "sorteo": "TRIPLE ZULIA B",
-    "numero_ganador": "206"
+    "numero_ganador": "89"
   },
   {
     "fecha_sorteo": "2023-11-11",
-    "nro_sorteo": "9628",
-    "hora_sorteo": "19:05:00",
+    "nro_sorteo": "9630",
+    "hora_sorteo": "22:15:00",
     "sorteo": "TRIPLE ZULIA C",
-    "numero_ganador": "072"
+    "numero_ganador": "23"
   },
   {
     "fecha_sorteo": "2023-11-11",
-    "nro_sorteo": "9628",
-    "hora_sorteo": "19:05:00",
+    "nro_sorteo": "9630",
+    "hora_sorteo": "22:15:00",
     "sorteo": "ZODIACO DEL ZULIA",
-    "numero_ganador": "72 LIB"
+    "numero_ganador": "23 LIB"
   },
   {
     "fecha_sorteo": "2023-11-11",
-    "nro_sorteo": "9628",
-    "hora_sorteo": "19:05:00",
+    "nro_sorteo": "9630",
+    "hora_sorteo": "22:15:00",
     "sorteo": "ZODIACO DEL ZULIA",
-    "numero_ganador": "072 LIB"
+    "numero_ganador": "45 LIB"
   }
 ]
