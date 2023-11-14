@@ -1,0 +1,98 @@
+[
+{
+"fecha_sorteo": "2023-11-6",
+"dia_semana": "Lunes",
+"nro_sorteo": "9614",
+"hora_sorteo": "12:45:00",
+"sorteo": "TRIPLE ZULIA A",
+"numero_ganador": "698"
+},
+{
+"fecha_sorteo": "2023-11-6",
+"dia_semana": "Lunes",
+"nro_sorteo": "9614",
+"hora_sorteo": "12:45:00",
+"sorteo": "TRIPLE ZULIA B",
+"numero_ganador": "470"
+},
+{
+"fecha_sorteo": "2023-11-6",
+"dia_semana": "Lunes",
+"nro_sorteo": "9614",
+"hora_sorteo": "12:45:00",
+"sorteo": "TRIPLE ZULIA C",
+"numero_ganador": "408"
+},
+{
+"fecha_sorteo": "2023-11-6",
+"dia_semana": "Lunes",
+"nro_sorteo": "9614",
+"hora_sorteo": "12:45:00",
+"sorteo": "ZODIACO DEL ZULIA",
+"numero_ganador": "408 SAG"
+},
+{
+"fecha_sorteo": "2023-11-6",
+"dia_semana": "Lunes",
+"nro_sorteo": "9615",
+"hora_sorteo": "16:45:00",
+"sorteo": "TRIPLE ZULIA A",
+"numero_ganador": "614"
+},
+{
+"fecha_sorteo": "2023-11-6",
+"dia_semana": "Lunes",
+"nro_sorteo": "9615",
+"hora_sorteo": "16:45:00",
+"sorteo": "TRIPLE ZULIA B",
+"numero_ganador": "807"
+},
+{
+"fecha_sorteo": "2023-11-6",
+"dia_semana": "Lunes",
+"nro_sorteo": "9615",
+"hora_sorteo": "16:45:00",
+"sorteo": "TRIPLE ZULIA C",
+"numero_ganador": "854"
+},
+{
+"fecha_sorteo": "2023-11-6",
+"dia_semana": "Lunes",
+"nro_sorteo": "9615",
+"hora_sorteo": "16:45:00",
+"sorteo": "ZODIACO DEL ZULIA",
+"numero_ganador": "854 CAP"
+},
+{
+"fecha_sorteo": "2023-11-6",
+"dia_semana": "Lunes",
+"nro_sorteo": "9616",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA A",
+"numero_ganador": "501"
+},
+{
+"fecha_sorteo": "2023-11-6",
+"dia_semana": "Lunes",
+"nro_sorteo": "9616",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA B",
+"numero_ganador": "168"
+},
+{
+"fecha_sorteo": "2023-11-6",
+"dia_semana": "Lunes",
+"nro_sorteo": "9616",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA C",
+"numero_ganador": "906"
+},
+{
+"fecha_sorteo": "2023-11-6",
+"dia_semana": "Lunes",
+"nro_sorteo": "9616",
+"hora_sorteo": "19:05:00",
+"sorteo": "ZODIACO DEL ZULIA",
+"numero_ganador": "906 CAP"
+}
+]
