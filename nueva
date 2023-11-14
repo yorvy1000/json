@@ -1,5 +1,133 @@
 [
 {
+"fecha_sorteo": "2023-11-5",
+"dia_semana": "Domingo",
+"nro_sorteo": "9613",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA A",
+"numero_ganador": "704"
+},
+{
+"fecha_sorteo": "2023-11-5",
+"dia_semana": "Domingo",
+"nro_sorteo": "9613",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA B",
+"numero_ganador": "589"
+},
+{
+"fecha_sorteo": "2023-11-5",
+"dia_semana": "Domingo",
+"nro_sorteo": "9613",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA C",
+"numero_ganador": "742"
+},
+{
+"fecha_sorteo": "2023-11-5",
+"dia_semana": "Domingo",
+"nro_sorteo": "9613",
+"hora_sorteo": "19:05:00",
+"sorteo": "ZODIACO DEL ZULIA",
+"numero_ganador": "742 GEM"
+},
+{
+"fecha_sorteo": "2023-11-11",
+"dia_semana": "Sábado",
+"nro_sorteo": "9629",
+"hora_sorteo": "12:45:00",
+"sorteo": "TRIPLE ZULIA A",
+"numero_ganador": "024"
+},
+{
+"fecha_sorteo": "2023-11-11",
+"dia_semana": "Sábado",
+"nro_sorteo": "9629",
+"hora_sorteo": "12:45:00",
+"sorteo": "TRIPLE ZULIA B",
+"numero_ganador": "123"
+},
+{
+"fecha_sorteo": "2023-11-11",
+"dia_semana": "Sábado",
+"nro_sorteo": "9629",
+"hora_sorteo": "12:45:00",
+"sorteo": "TRIPLE ZULIA C",
+"numero_ganador": "016"
+},
+{
+"fecha_sorteo": "2023-11-11",
+"dia_semana": "Sábado",
+"nro_sorteo": "9629",
+"hora_sorteo": "12:45:00",
+"sorteo": "ZODIACO DEL ZULIA",
+"numero_ganador": "016 SAG"
+},
+{
+"fecha_sorteo": "2023-11-11",
+"dia_semana": "Sábado",
+"nro_sorteo": "9630",
+"hora_sorteo": "16:45:00",
+"sorteo": "TRIPLE ZULIA A",
+"numero_ganador": "027"
+},
+{
+"fecha_sorteo": "2023-11-11",
+"dia_semana": "Sábado",
+"nro_sorteo": "9630",
+"hora_sorteo": "16:45:00",
+"sorteo": "TRIPLE ZULIA B",
+"numero_ganador": "931"
+},
+{
+"fecha_sorteo": "2023-11-11",
+"dia_semana": "Sábado",
+"nro_sorteo": "9630",
+"hora_sorteo": "16:45:00",
+"sorteo": "TRIPLE ZULIA C",
+"numero_ganador": "279"
+},
+{
+"fecha_sorteo": "2023-11-11",
+"dia_semana": "Sábado",
+"nro_sorteo": "9630",
+"hora_sorteo": "16:45:00",
+"sorteo": "ZODIACO DEL ZULIA",
+"numero_ganador": "279 LIB"
+},
+{
+"fecha_sorteo": "2023-11-11",
+"dia_semana": "Sábado",
+"nro_sorteo": "9631",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA A",
+"numero_ganador": "897"
+},
+{
+"fecha_sorteo": "2023-11-11",
+"dia_semana": "Sábado",
+"nro_sorteo": "9631",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA B",
+"numero_ganador": "251"
+},
+{
+"fecha_sorteo": "2023-11-11",
+"dia_semana": "Sábado",
+"nro_sorteo": "9631",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA C",
+"numero_ganador": "038"
+},
+{
+"fecha_sorteo": "2023-11-11",
+"dia_semana": "Sábado",
+"nro_sorteo": "9631",
+"hora_sorteo": "19:05:00",
+"sorteo": "ZODIACO DEL ZULIA",
+"numero_ganador": "038 SAG"
+},
+{
 "fecha_sorteo": "2023-11-10",
 "dia_semana": "Viernes",
 "nro_sorteo": "9626",
