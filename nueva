@@ -1,5 +1,197 @@
 [
 {
+"fecha_sorteo": "2023-11-8",
+"dia_semana": "Miércoles",
+"nro_sorteo": "9620",
+"hora_sorteo": "12:45:00",
+"sorteo": "TRIPLE ZULIA A",
+"numero_ganador": "369"
+},
+{
+"fecha_sorteo": "2023-11-8",
+"dia_semana": "Miércoles",
+"nro_sorteo": "9620",
+"hora_sorteo": "12:45:00",
+"sorteo": "TRIPLE ZULIA B",
+"numero_ganador": "221"
+},
+{
+"fecha_sorteo": "2023-11-8",
+"dia_semana": "Miércoles",
+"nro_sorteo": "9620",
+"hora_sorteo": "12:45:00",
+"sorteo": "TRIPLE ZULIA C",
+"numero_ganador": "435"
+},
+{
+"fecha_sorteo": "2023-11-8",
+"dia_semana": "Miércoles",
+"nro_sorteo": "9620",
+"hora_sorteo": "12:45:00",
+"sorteo": "ZODIACO DEL ZULIA",
+"numero_ganador": "435 CAN"
+},
+{
+"fecha_sorteo": "2023-11-8",
+"dia_semana": "Miércoles",
+"nro_sorteo": "9621",
+"hora_sorteo": "16:45:00",
+"sorteo": "TRIPLE ZULIA A",
+"numero_ganador": "637"
+},
+{
+"fecha_sorteo": "2023-11-8",
+"dia_semana": "Miércoles",
+"nro_sorteo": "9621",
+"hora_sorteo": "16:45:00",
+"sorteo": "TRIPLE ZULIA B",
+"numero_ganador": "158"
+},
+{
+"fecha_sorteo": "2023-11-8",
+"dia_semana": "Miércoles",
+"nro_sorteo": "9621",
+"hora_sorteo": "16:45:00",
+"sorteo": "TRIPLE ZULIA C",
+"numero_ganador": "283"
+},
+{
+"fecha_sorteo": "2023-11-8",
+"dia_semana": "Miércoles",
+"nro_sorteo": "9621",
+"hora_sorteo": "16:45:00",
+"sorteo": "ZODIACO DEL ZULIA",
+"numero_ganador": "283 GEM"
+},
+{
+"fecha_sorteo": "2023-11-8",
+"dia_semana": "Miércoles",
+"nro_sorteo": "9622",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA A",
+"numero_ganador": "532"
+},
+{
+"fecha_sorteo": "2023-11-8",
+"dia_semana": "Miércoles",
+"nro_sorteo": "9622",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA B",
+"numero_ganador": "961"
+},
+{
+"fecha_sorteo": "2023-11-8",
+"dia_semana": "Miércoles",
+"nro_sorteo": "9622",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA C",
+"numero_ganador": "339"
+},
+{
+"fecha_sorteo": "2023-11-8",
+"dia_semana": "Miércoles",
+"nro_sorteo": "9622",
+"hora_sorteo": "19:05:00",
+"sorteo": "ZODIACO DEL ZULIA",
+"numero_ganador": "339 CAN"
+}
+{
+"fecha_sorteo": "2023-11-7",
+"dia_semana": "Martes",
+"nro_sorteo": "9617",
+"hora_sorteo": "12:45:00",
+"sorteo": "TRIPLE ZULIA A",
+"numero_ganador": "482"
+},
+{
+"fecha_sorteo": "2023-11-7",
+"dia_semana": "Martes",
+"nro_sorteo": "9617",
+"hora_sorteo": "12:45:00",
+"sorteo": "TRIPLE ZULIA B",
+"numero_ganador": "648"
+},
+{
+"fecha_sorteo": "2023-11-7",
+"dia_semana": "Martes",
+"nro_sorteo": "9617",
+"hora_sorteo": "12:45:00",
+"sorteo": "TRIPLE ZULIA C",
+"numero_ganador": "836"
+},
+{
+"fecha_sorteo": "2023-11-7",
+"dia_semana": "Martes",
+"nro_sorteo": "9617",
+"hora_sorteo": "12:45:00",
+"sorteo": "ZODIACO DEL ZULIA",
+"numero_ganador": "836 SAG"
+},
+{
+"fecha_sorteo": "2023-11-7",
+"dia_semana": "Martes",
+"nro_sorteo": "9618",
+"hora_sorteo": "16:45:00",
+"sorteo": "TRIPLE ZULIA A",
+"numero_ganador": "481"
+},
+{
+"fecha_sorteo": "2023-11-7",
+"dia_semana": "Martes",
+"nro_sorteo": "9618",
+"hora_sorteo": "16:45:00",
+"sorteo": "TRIPLE ZULIA B",
+"numero_ganador": "302"
+},
+{
+"fecha_sorteo": "2023-11-7",
+"dia_semana": "Martes",
+"nro_sorteo": "9618",
+"hora_sorteo": "16:45:00",
+"sorteo": "TRIPLE ZULIA C",
+"numero_ganador": "108"
+},
+{
+"fecha_sorteo": "2023-11-7",
+"dia_semana": "Martes",
+"nro_sorteo": "9618",
+"hora_sorteo": "16:45:00",
+"sorteo": "ZODIACO DEL ZULIA",
+"numero_ganador": "108 ACU"
+},
+{
+"fecha_sorteo": "2023-11-7",
+"dia_semana": "Martes",
+"nro_sorteo": "9619",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA A",
+"numero_ganador": "759"
+},
+{
+"fecha_sorteo": "2023-11-7",
+"dia_semana": "Martes",
+"nro_sorteo": "9619",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA B",
+"numero_ganador": "155"
+},
+{
+"fecha_sorteo": "2023-11-7",
+"dia_semana": "Martes",
+"nro_sorteo": "9619",
+"hora_sorteo": "19:05:00",
+"sorteo": "TRIPLE ZULIA C",
+"numero_ganador": "601"
+},
+{
+"fecha_sorteo": "2023-11-7",
+"dia_semana": "Martes",
+"nro_sorteo": "9619",
+"hora_sorteo": "19:05:00",
+"sorteo": "ZODIACO DEL ZULIA",
+"numero_ganador": "601 VIR"
+}
+{
 "fecha_sorteo": "2023-11-6",
 "dia_semana": "Lunes",
 "nro_sorteo": "9614",
