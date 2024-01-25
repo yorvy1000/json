@@ -1,317 +1,339 @@
 [
-  {
-    "Sorteo": 9622,
-    "Fecha": "08-11-2023",
-    "Día": "Miércoles",
-    "Hora": "07:05 PM",
-    "Triple A": 532,
-    "Triple B": 961,
-    "Zodiaco\nTriple C + Signo": "339 - CAN"
-  },
-  {
-    "Sorteo": 9621,
-    "Fecha": "08-11-2023",
-    "Día": "Miércoles",
-    "Hora": "04:45 PM",
-    "Triple A": 637,
-    "Triple B": 158,
-    "Zodiaco\nTriple C + Signo": "283 - GEM"
-  },
-  {
-    "Sorteo": 9620,
-    "Fecha": "08-11-2023",
-    "Día": "Miércoles",
-    "Hora": "12:45 PM",
-    "Triple A": 369,
-    "Triple B": 221,
-    "Zodiaco\nTriple C + Signo": "435 - CAN"
-  },
-  {
-    "Sorteo": 9619,
-    "Fecha": "07-11-2023",
-    "Día": "Martes",
-    "Hora": "07:05 PM",
-    "Triple A": 759,
-    "Triple B": 155,
-    "Zodiaco\nTriple C + Signo": "601 - VIR"
-  },
-  {
-    "Sorteo": 9618,
-    "Fecha": "07-11-2023",
-    "Día": "Martes",
-    "Hora": "04:45 PM",
-    "Triple A": 481,
-    "Triple B": 302,
-    "Zodiaco\nTriple C + Signo": "108 - ACU"
-  },
-  {
-    "Sorteo": 9617,
-    "Fecha": "07-11-2023",
-    "Día": "Martes",
-    "Hora": "12:45 PM",
-    "Triple A": 482,
-    "Triple B": 648,
-    "Zodiaco\nTriple C + Signo": "836 - SAG"
-  },
-  {
-    "Sorteo": 9616,
-    "Fecha": "06-11-2023",
-    "Día": "Lunes",
-    "Hora": "07:05 PM",
-    "Triple A": 501,
-    "Triple B": 168,
-    "Zodiaco\nTriple C + Signo": "906 - CAP"
-  },
-  {
-    "Sorteo": 9615,
-    "Fecha": "06-11-2023",
-    "Día": "Lunes",
-    "Hora": "04:45 PM",
-    "Triple A": 614,
-    "Triple B": 807,
-    "Zodiaco\nTriple C + Signo": "854 - CAP"
-  },
-  {
-    "Sorteo": 9614,
-    "Fecha": "06-11-2023",
-    "Día": "Lunes",
-    "Hora": "12:45 PM",
-    "Triple A": 698,
-    "Triple B": 470,
-    "Zodiaco\nTriple C + Signo": "408 - SAG"
-  },
-  {
-    "Sorteo": 9613,
-    "Fecha": "05-11-2023",
-    "Día": "Domingo",
-    "Hora": "07:05 PM",
-    "Triple A": 704,
-    "Triple B": 589,
-    "Zodiaco\nTriple C + Signo": "742 - GEM"
-  },
-  {
-    "Sorteo": 9612,
-    "Fecha": "04-11-2023",
-    "Día": "Sábado",
-    "Hora": "07:05 PM",
-    "Triple A": 972,
-    "Triple B": 839,
-    "Zodiaco\nTriple C + Signo": "645 - VIR"
-  },
-  {
-    "Sorteo": 9611,
-    "Fecha": "04-11-2023",
-    "Día": "Sábado",
-    "Hora": "04:45 PM",
-    "Triple A": 370,
-    "Triple B": 57,
-    "Zodiaco\nTriple C + Signo": "220 - LEO"
-  },
-  {
-    "Sorteo": 9610,
-    "Fecha": "04-11-2023",
-    "Día": "Sábado",
-    "Hora": "12:45 PM",
-    "Triple A": 536,
-    "Triple B": 114,
-    "Zodiaco\nTriple C + Signo": "086 - ARI"
-  },
-  {
-    "Sorteo": 9609,
-    "Fecha": "03-11-2023",
-    "Día": "Viernes",
-    "Hora": "07:05 PM",
-    "Triple A": 774,
-    "Triple B": 143,
-    "Zodiaco\nTriple C + Signo": "263 - ESC"
-  },
-  {
-    "Sorteo": 9608,
-    "Fecha": "03-11-2023",
-    "Día": "Viernes",
-    "Hora": "04:45 PM",
-    "Triple A": 756,
-    "Triple B": 221,
-    "Zodiaco\nTriple C + Signo": "075 - GEM"
-  },
-  {
-    "Sorteo": 9607,
-    "Fecha": "03-11-2023",
-    "Día": "Viernes",
-    "Hora": "12:45 PM",
-    "Triple A": 505,
-    "Triple B": 701,
-    "Zodiaco\nTriple C + Signo": "679 - ESC"
-  },
-  {
-    "Sorteo": 9606,
-    "Fecha": "02-11-2023",
-    "Día": "Jueves",
-    "Hora": "07:05 PM",
-    "Triple A": 631,
-    "Triple B": 79,
-    "Zodiaco\nTriple C + Signo": "271 - SAG"
-  },
-  {
-    "Sorteo": 9605,
-    "Fecha": "02-11-2023",
-    "Día": "Jueves",
-    "Hora": "04:45 PM",
-    "Triple A": 245,
-    "Triple B": 574,
-    "Zodiaco\nTriple C + Signo": "729 - CAN"
-  },
-  {
-    "Sorteo": 9604,
-    "Fecha": "02-11-2023",
-    "Día": "Jueves",
-    "Hora": "12:45 PM",
-    "Triple A": 359,
-    "Triple B": 441,
-    "Zodiaco\nTriple C + Signo": "619 - LIB"
-  },
-  {
-    "Sorteo": 9603,
-    "Fecha": "01-11-2023",
-    "Día": "Miércoles",
-    "Hora": "07:05 PM",
-    "Triple A": 650,
-    "Triple B": 141,
-    "Zodiaco\nTriple C + Signo": "156 - PIS"
-  },
-  {
-    "Sorteo": 9602,
-    "Fecha": "01-11-2023",
-    "Día": "Miércoles",
-    "Hora": "04:45 PM",
-    "Triple A": 874,
-    "Triple B": 545,
-    "Zodiaco\nTriple C + Signo": "802 - ACU"
-  },
-  {
-    "Sorteo": 9601,
-    "Fecha": "01-11-2023",
-    "Día": "Miércoles",
-    "Hora": "12:45 PM",
-    "Triple A": 816,
-    "Triple B": 256,
-    "Zodiaco\nTriple C + Signo": "893 - TAU"
-  },
-  {
-    "Sorteo": 9600,
-    "Fecha": "31-10-2023",
-    "Día": "Martes",
-    "Hora": "07:05 PM",
-    "Triple A": 928,
-    "Triple B": 505,
-    "Zodiaco\nTriple C + Signo": "784 - SAG"
-  },
-  {
-    "Sorteo": 9599,
-    "Fecha": "31-10-2023",
-    "Día": "Martes",
-    "Hora": "04:45 PM",
-    "Triple A": 426,
-    "Triple B": 139,
-    "Zodiaco\nTriple C + Signo": "963 - ACU"
-  },
-  {
-    "Sorteo": 9598,
-    "Fecha": "31-10-2023",
-    "Día": "Martes",
-    "Hora": "12:45 PM",
-    "Triple A": 114,
-    "Triple B": 574,
-    "Zodiaco\nTriple C + Signo": "689 - ARI"
-  },
-  {
-    "Sorteo": 9597,
-    "Fecha": "30-10-2023",
-    "Día": "Lunes",
-    "Hora": "07:05 PM",
-    "Triple A": 149,
-    "Triple B": 464,
-    "Zodiaco\nTriple C + Signo": "941 - CAN"
-  },
-  {
-    "Sorteo": 9596,
-    "Fecha": "30-10-2023",
-    "Día": "Lunes",
-    "Hora": "04:45 PM",
-    "Triple A": 632,
-    "Triple B": 728,
-    "Zodiaco\nTriple C + Signo": "845 - VIR"
-  },
-  {
-    "Sorteo": 9595,
-    "Fecha": "30-10-2023",
-    "Día": "Lunes",
-    "Hora": "12:45 PM",
-    "Triple A": 601,
-    "Triple B": 795,
-    "Zodiaco\nTriple C + Signo": "063 - LEO"
-  },
-  {
-    "Sorteo": 9594,
-    "Fecha": "29-10-2023",
-    "Día": "Domingo",
-    "Hora": "07:05 PM",
-    "Triple A": 667,
-    "Triple B": 237,
-    "Zodiaco\nTriple C + Signo": "491 - TAU"
-  },
-  {
-    "Sorteo": 9593,
-    "Fecha": "28-10-2023",
-    "Día": "Sábado",
-    "Hora": "07:05 PM",
-    "Triple A": 20,
-    "Triple B": 835,
-    "Zodiaco\nTriple C + Signo": "179 - GEM"
-  },
-  {
-    "Sorteo": 9592,
-    "Fecha": "28-10-2023",
-    "Día": "Sábado",
-    "Hora": "04:45 PM",
-    "Triple A": 522,
-    "Triple B": 187,
-    "Zodiaco\nTriple C + Signo": "420 - TAU"
-  },
-  {
-    "Sorteo": 9591,
-    "Fecha": "28-10-2023",
-    "Día": "Sábado",
-    "Hora": "12:45 PM",
-    "Triple A": 501,
-    "Triple B": 391,
-    "Zodiaco\nTriple C + Signo": "406 - PIS"
-  },
-  {
-    "Sorteo": 9590,
-    "Fecha": "27-10-2023",
-    "Día": "Viernes",
-    "Hora": "07:05 PM",
-    "Triple A": 449,
-    "Triple B": 407,
-    "Zodiaco\nTriple C + Signo": "803 - ARI"
-  },
-  {
-    "Sorteo": 9589,
-    "Fecha": "27-10-2023",
-    "Día": "Viernes",
-    "Hora": "04:45 PM",
-    "Triple A": 920,
-    "Triple B": 390,
-    "Zodiaco\nTriple C + Signo": "229 - GEM"
-  },
-  {
-    "Sorteo": 9588,
-    "Fecha": "27-10-2023",
-    "Día": "Viernes",
-    "Hora": "12:45 PM",
-    "Triple A": 801,
-    "Triple B": 849,
-    "Zodiaco\nTriple C + Signo": "638 - VIR"
-  }
-]
+    {
+    "fecha_sorteo": "2024-1-15",
+    "dia_semana": "Lunes",
+    "nro_sorteo": "0001",
+    "hora_sorteo": "10:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "130"
+    },
+    {
+    "fecha_sorteo": "2024-1-15",
+    "dia_semana": "Lunes",
+    "nro_sorteo": "0002",
+    "hora_sorteo": "11:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "738"
+    },
+    {
+    "fecha_sorteo": "2024-1-15",
+    "dia_semana": "Lunes",
+    "nro_sorteo": "0003",
+    "hora_sorteo": "14:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "392"
+    },
+    {
+    "fecha_sorteo": "2024-1-15",
+    "dia_semana": "Lunes",
+    "nro_sorteo": "0004",
+    "hora_sorteo": "15:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "833"
+    },
+    {
+    "fecha_sorteo": "2024-1-15",
+    "dia_semana": "Lunes",
+    "nro_sorteo": "0005",
+    "hora_sorteo": "17:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "009"
+    },
+    {
+    "fecha_sorteo": "2024-1-15",
+    "dia_semana": "Lunes",
+    "nro_sorteo": "0006",
+    "hora_sorteo": "18:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "364"
+    },
+    {
+    "fecha_sorteo": "2024-1-16",
+    "dia_semana": "Martes",
+    "nro_sorteo": "0007",
+    "hora_sorteo": "10:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "511"
+    },
+    {
+    "fecha_sorteo": "2024-1-16",
+    "dia_semana": "Martes",
+    "nro_sorteo": "0008",
+    "hora_sorteo": "11:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "748"
+    },
+    {
+    "fecha_sorteo": "2024-1-16",
+    "dia_semana": "Martes",
+    "nro_sorteo": "0009",
+    "hora_sorteo": "14:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "991"
+    },
+    {
+    "fecha_sorteo": "2024-1-16",
+    "dia_semana": "Martes",
+    "nro_sorteo": "0010",
+    "hora_sorteo": "15:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "019"
+    },
+    {
+    "fecha_sorteo": "2024-1-16",
+    "dia_semana": "Martes",
+    "nro_sorteo": "0011",
+    "hora_sorteo": "17:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "671"
+    },
+    {
+    "fecha_sorteo": "2024-1-16",
+    "dia_semana": "Martes",
+    "nro_sorteo": "0012",
+    "hora_sorteo": "18:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "378"
+    },
+    {
+    "fecha_sorteo": "2024-1-17",
+    "dia_semana": "Miercoles",
+    "nro_sorteo": "0013",
+    "hora_sorteo": "10:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "280"
+    },
+    {
+    "fecha_sorteo": "2024-1-17",
+    "dia_semana": "Miercoles",
+    "nro_sorteo": "0014",
+    "hora_sorteo": "11:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "843"
+    },
+    {
+    "fecha_sorteo": "2024-1-17",
+    "dia_semana": "Miercoles",
+    "nro_sorteo": "0015",
+    "hora_sorteo": "14:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "254"
+    },
+    {
+    "fecha_sorteo": "2024-1-17",
+    "dia_semana": "Miercoles",
+    "nro_sorteo": "0016",
+    "hora_sorteo": "15:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "019"
+    },
+    {
+    "fecha_sorteo": "2024-1-17",
+    "dia_semana": "Miercoles",
+    "nro_sorteo": "0017",
+    "hora_sorteo": "17:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "387"
+    },
+    {
+    "fecha_sorteo": "2024-1-17",
+    "dia_semana": "Miercoles",
+    "nro_sorteo": "0018",
+    "hora_sorteo": "18:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "412"
+    },
+    {
+    "fecha_sorteo": "2024-1-18",
+    "dia_semana": "Jueves",
+    "nro_sorteo": "0019",
+    "hora_sorteo": "10:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "114"
+    },
+    {
+    "fecha_sorteo": "2024-1-18",
+    "dia_semana": "Jueves",
+    "nro_sorteo": "0020",
+    "hora_sorteo": "11:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "992"
+    },
+    {
+    "fecha_sorteo": "2024-1-18",
+    "dia_semana": "Jueves",
+    "nro_sorteo": "0021",
+    "hora_sorteo": "14:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "192"
+    },
+    {
+    "fecha_sorteo": "2024-1-18",
+    "dia_semana": "Jueves",
+    "nro_sorteo": "0022",
+    "hora_sorteo": "15:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "918"
+    },
+    {
+    "fecha_sorteo": "2024-1-18",
+    "dia_semana": "Jueves",
+    "nro_sorteo": "0023",
+    "hora_sorteo": "17:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "544"
+    },
+    {
+    "fecha_sorteo": "2024-1-18",
+    "dia_semana": "Jueves",
+    "nro_sorteo": "0024",
+    "hora_sorteo": "18:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "621"
+    },
+    {
+    "fecha_sorteo": "2024-1-19",
+    "dia_semana": "Viernes",
+    "nro_sorteo": "0025",
+    "hora_sorteo": "10:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "766"
+    },
+    {
+    "fecha_sorteo": "2024-1-19",
+    "dia_semana": "Viernes",
+    "nro_sorteo": "0026",
+    "hora_sorteo": "11:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "221"
+    },
+    {
+    "fecha_sorteo": "2024-1-19",
+    "dia_semana": "Viernes",
+    "nro_sorteo": "0027",
+    "hora_sorteo": "14:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "463"
+    },
+    {
+    "fecha_sorteo": "2024-1-19",
+    "dia_semana": "Viernes",
+    "nro_sorteo": "0028",
+    "hora_sorteo": "15:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "344"
+    },
+    {
+    "fecha_sorteo": "2024-1-19",
+    "dia_semana": "Viernes",
+    "nro_sorteo": "0029",
+    "hora_sorteo": "17:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "719"
+    },
+    {
+    "fecha_sorteo": "2024-1-19",
+    "dia_semana": "Viernes",
+    "nro_sorteo": "0030",
+    "hora_sorteo": "18:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "032"
+    },
+    {
+    "fecha_sorteo": "2024-1-20",
+    "dia_semana": "Sabado",
+    "nro_sorteo": "0031",
+    "hora_sorteo": "10:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "540"
+    },
+    {
+    "fecha_sorteo": "2024-1-20",
+    "dia_semana": "Sabado",
+    "nro_sorteo": "0032",
+    "hora_sorteo": "11:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "378"
+    },
+    {
+    "fecha_sorteo": "2024-1-20",
+    "dia_semana": "Sabado",
+    "nro_sorteo": "0033",
+    "hora_sorteo": "14:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "012"
+    },
+    {
+    "fecha_sorteo": "2024-1-20",
+    "dia_semana": "Sabado",
+    "nro_sorteo": "0034",
+    "hora_sorteo": "15:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "767"
+    },
+    {
+    "fecha_sorteo": "2024-1-20",
+    "dia_semana": "Sabado",
+    "nro_sorteo": "0035",
+    "hora_sorteo": "17:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "923"
+    },
+    {
+    "fecha_sorteo": "2024-1-20",
+    "dia_semana": "Sabado",
+    "nro_sorteo": "0036",
+    "hora_sorteo": "18:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "801"
+    },
+    {
+    "fecha_sorteo": "2024-1-21",
+    "dia_semana": "Domingo",
+    "nro_sorteo": "0037",
+    "hora_sorteo": "10:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "272"
+    },
+    {
+    "fecha_sorteo": "2024-1-21",
+    "dia_semana": "Domingo",
+    "nro_sorteo": "0038",
+    "hora_sorteo": "11:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "309"
+    },
+    {
+    "fecha_sorteo": "2024-1-21",
+    "dia_semana": "Domingo",
+    "nro_sorteo": "0039",
+    "hora_sorteo": "14:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "887"
+    },
+    {
+    "fecha_sorteo": "2024-1-21",
+    "dia_semana": "Domingo",
+    "nro_sorteo": "0040",
+    "hora_sorteo": "15:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "900"
+    },
+    {
+    "fecha_sorteo": "2024-1-21",
+    "dia_semana": "Domingo",
+    "nro_sorteo": "0041",
+    "hora_sorteo": "17:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "300"
+    },
+    {
+    "fecha_sorteo": "2024-1-21",
+    "dia_semana": "Domingo",
+    "nro_sorteo": "0042",
+    "hora_sorteo": "18:00:00",
+    "sorteo": "TRIPLE DORADO",
+    "numero_ganador": "598"
+    }
+    ]
+    
