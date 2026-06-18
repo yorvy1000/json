@@ -205,10 +205,15 @@ def send_html_email_via_smtp(lead, smtp_server, smtp_port, smtp_user, smtp_passw
         else:
             raise ValueError("Las credenciales SMTP en el archivo .env no están configuradas y el envío nativo a través de sendmail falló. Por favor edita tu archivo .env.")
             
-    # Enviar por SMTP
+    # Enviar por SMTP (soporta SSL en 465, TLS/STARTTLS en 587 u otros)
     try:
-        server = smtplib.SMTP(smtp_server, int(smtp_port))
-        server.starttls()
+        port = int(smtp_port)
+        if port == 465:
+            server = smtplib.SMTP_SSL(smtp_server, port)
+        else:
+            server = smtplib.SMTP(smtp_server, port)
+            server.starttls()
+            
         server.login(smtp_user, smtp_password)
         server.sendmail(smtp_user, [to_email], msg.as_string())
         server.quit()
