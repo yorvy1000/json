@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+cloned_repo/
+*.db
+*.db.bak
+.env
+agent_activity.log
+cron_output.log
