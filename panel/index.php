@@ -1246,7 +1246,20 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
             
             try {
                 const response = await fetch(`api.php?action=get_leads&domain=${encodeURIComponent(domainName)}`);
-                currentLeads = await response.json();
+                const rawData = await response.json();
+                
+                // Verificar si la respuesta es un array válido (no un error)
+                if (!Array.isArray(rawData)) {
+                    panel.innerHTML = `<div style="text-align:center;padding:3rem;color:var(--status-rejected);">
+                        <p style="font-size:1.1rem;font-weight:600;">Error al cargar leads</p>
+                        <p style="margin-top:0.5rem;font-size:0.9rem;color:var(--text-muted);">${rawData.error || 'Respuesta inesperada del servidor'}</p>
+                    </div>`;
+                    return;
+                }
+                currentLeads = rawData;
+
+                // Metadatos del dominio (con fallback seguro si aún no están cargados)
+                const safeInfo = domInfo || {};
                 
                 let leadsHTML = '';
                 if (currentLeads.length === 0) {
@@ -1322,9 +1335,9 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
                         <div class="domain-title-section">
                             <h2>${domainName}</h2>
                             <div class="domain-detail-meta">
-                                <span>Categoría: <strong>${domInfo.categoria || 'Sin clasificar'}</strong></span>
-                                <span>Antigüedad: <strong>${domInfo.ano_registro || 'N/A'}</strong></span>
-                                <span>Score: <strong>${domInfo.score || 'N/A'}</strong></span>
+                                <span>Categoría: <strong>${safeInfo.categoria || 'Sin clasificar'}</strong></span>
+                                <span>Antigüedad: <strong>${safeInfo.ano_registro || 'N/A'}</strong></span>
+                                <span>Score: <strong>${safeInfo.score || 'N/A'}</strong></span>
                             </div>
                         </div>
                     </div>
@@ -1333,6 +1346,11 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
 
             } catch (err) {
                 console.error("Error al cargar leads de dominio:", err);
+                panel.innerHTML = `<div style="text-align:center;padding:3rem;color:var(--status-rejected);">
+                    <p style="font-size:1.1rem;font-weight:600;">Error de conexión</p>
+                    <p style="margin-top:0.5rem;font-size:0.9rem;color:var(--text-muted);">No se pudo conectar con api.php. Verifica que la sesión sigue activa.</p>
+                    <p style="margin-top:0.5rem;font-size:0.8rem;color:#6b7280;">${err.message}</p>
+                </div>`;
             }
         }
 
@@ -1550,8 +1568,8 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
             } catch (err) {}
         }
 
-        // Arranque Inicial
-        fetchDomains();
+        // Arranque Inicial - cargamos dominios + stats al mismo tiempo
+        loadDashboard();
         if (!isHostinger) {
             checkScraperStatus();
             setInterval(checkScraperStatus, 4000);
