@@ -1,4 +1,10 @@
 <?php
+// Configurar sesion - debe coincidir EXACTAMENTE con api.php
+ini_set('session.cookie_httponly', 1);
+ini_set('session.use_strict_mode', 1);
+ini_set('session.cookie_path', '/');
+ini_set('session.cookie_samesite', 'Lax');
+session_name('VIBRADEALS_SESS');
 session_start();
 
 // Helper to load environment variables from .env
@@ -971,6 +977,7 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
         <div class="header-actions">
             <button class="btn" id="sync-btn" style="background: linear-gradient(135deg, #3b82f6, #2563eb); box-shadow: 0 4px 12px rgba(59,130,246,0.2);" onclick="syncFromServer(event)">Sincronizar Hostinger</button>
             <button class="btn" style="background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 12px rgba(16,185,129,0.2);" onclick="sendAllPending()">Enviar Todo Pendiente (Auto)</button>
+            <button class="btn" style="background: linear-gradient(135deg, #ffc107, #ff9800); box-shadow: 0 4px 12px rgba(255,193,7,0.2);" onclick="sendTestEmail()">Enviar Correo de Prueba</button>
             <button class="btn" id="run-scraper-btn" onclick="toggleScraper()">Iniciar Prospección 24/7</button>
             <button class="btn btn-secondary" onclick="loadDashboard()">Refrescar Datos</button>
             <a class="btn btn-secondary" style="color: var(--status-rejected); border-color: rgba(239, 68, 68, 0.3); text-decoration: none;" href="index.php?logout=1">Cerrar Sesión</a>
@@ -1069,6 +1076,23 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
         let isScrapingActive = false;
         let activeLanguageFilter = 'all';
 
+        /**
+         * apiFetch - wrapper de fetch que SIEMPRE incluye credentials: 'same-origin'
+         * para que el navegador envie la cookie de sesion VIBRADEALS_SESS.
+         * Sin esto, las peticiones fetch no incluyen cookies y la API devuelve 401.
+         */
+        async function apiFetch(url, options = {}) {
+            const defaults = {
+                credentials: 'same-origin',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    ...(options.headers || {})
+                }
+            };
+            // Si hay body y no hay Content-Type, dejamos que el navegador lo establezca
+            return fetch(url, { ...defaults, ...options, headers: { ...defaults.headers, ...(options.headers || {}) } });
+        }
+
         // Adapt UI if running on Hostinger
         if (isHostinger) {
             // Hide sync button
@@ -1094,7 +1118,7 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
             btn.textContent = 'Sincronizando...';
             
             try {
-                const response = await fetch('api.php?action=sync_from_server', {
+                const response = await apiFetch('api.php?action=sync_from_server', {
                     method: 'POST'
                 });
                 const resData = await response.json();
@@ -1129,7 +1153,7 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
 
         async function updateStatsUI() {
             try {
-                const response = await fetch('api.php?action=get_stats');
+                const response = await apiFetch('api.php?action=get_stats');
                 const stats = await response.json();
                 document.getElementById('stat-total-domains').textContent = stats.total_dominios_venta || 0;
                 document.getElementById('stat-pending-leads').textContent = stats.leads_pendiente || 0;
@@ -1149,8 +1173,21 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
 
         async function fetchDomains() {
             try {
-                const response = await fetch('api.php?action=get_domains');
-                allDomains = await response.json();
+                const response = await apiFetch('api.php?action=get_domains');
+                // Si sesion expiro, redirigir al login
+                if (response.status === 401) {
+                    alert('Tu sesion ha expirado. Por favor inicia sesion de nuevo.');
+                    window.location.href = 'index.php?logout=1';
+                    return;
+                }
+                const data = await response.json();
+                if (!Array.isArray(data)) {
+                    console.error('get_domains error:', data.error);
+                    document.getElementById('domain-items-container').innerHTML =
+                        `<div style="padding:1rem;color:#ef4444;text-align:center;">Error: ${data.error || 'Error al cargar dominios'}</div>`;
+                    return;
+                }
+                allDomains = data;
                 renderDomainsList(allDomains);
             } catch (err) {
                 console.error("Error al obtener dominios:", err);
@@ -1245,7 +1282,16 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
             const domInfo = allDomains.find(d => d.dominio === domainName);
             
             try {
-                const response = await fetch(`api.php?action=get_leads&domain=${encodeURIComponent(domainName)}`);
+                const response = await apiFetch(`api.php?action=get_leads&domain=${encodeURIComponent(domainName)}`);
+                
+                // Manejar sesion expirada
+                if (response.status === 401) {
+                    panel.innerHTML = `<div style="text-align:center;padding:3rem;color:#f59e0b;">
+                        <p style="font-size:1.1rem;font-weight:600;">Sesion expirada</p>
+                        <p style="margin-top:0.5rem;"><a href="index.php?logout=1" style="color:#a78bfa;">Haz clic aqui para iniciar sesion de nuevo</a></p>
+                    </div>`;
+                    return;
+                }
                 const rawData = await response.json();
                 
                 // Verificar si la respuesta es un array válido (no un error)
@@ -1356,7 +1402,7 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
 
         async function updateStatus(id, newStatus, btn) {
             try {
-                const response = await fetch(`api.php?action=update_lead_status&lead_id=${id}`, {
+                const response = await apiFetch(`api.php?action=update_lead_status&lead_id=${id}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ estado: newStatus })
@@ -1391,7 +1437,7 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
             btn.disabled = true;
             
             try {
-                const response = await fetch('api.php?action=send_all_pending', { method: 'POST' });
+                const response = await apiFetch('api.php?action=send_all_pending', { method: 'POST' });
                 const res = await response.json();
                 alert(res.message);
                 loadDashboard();
@@ -1403,12 +1449,36 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
             }
         }
 
+        async function sendTestEmail() {
+            if (!confirm("¿Deseas enviar un correo de prueba a yorvygarcia@gmail.com?")) return;
+            
+            const btn = document.querySelector('button[onclick="sendTestEmail()"]');
+            const originalText = btn.textContent;
+            btn.textContent = "Enviando prueba...";
+            btn.disabled = true;
+            
+            try {
+                const response = await apiFetch('api.php?action=send_test_email', { method: 'POST' });
+                const res = await response.json();
+                if (res.success) {
+                    alert("¡Correo de prueba enviado correctamente a yorvygarcia@gmail.com!");
+                } else {
+                    alert("Error al enviar correo de prueba: " + res.error);
+                }
+            } catch (err) {
+                alert("Error de red al intentar enviar el correo de prueba.");
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
+
         async function sendEmail(leadId, btn) {
             const originalText = btn.textContent;
             btn.textContent = "Enviando...";
             btn.disabled = true;
             try {
-                const response = await fetch(`api.php?action=send_email&lead_id=${leadId}`, { method: 'POST' });
+                const response = await apiFetch(`api.php?action=send_email&lead_id=${leadId}`, { method: 'POST' });
                 const res = await response.json();
                 if (res.success) {
                     btn.textContent = "¡Enviado!";
@@ -1474,7 +1544,7 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
             btn.disabled = true;
             
             try {
-                const response = await fetch(`api.php?action=send_custom_email&lead_id=${leadId}`, {
+                const response = await apiFetch(`api.php?action=send_custom_email&lead_id=${leadId}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ subject: subject, body: body })
@@ -1508,7 +1578,7 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
         async function deleteLead(id) {
             if (!confirm("¿Seguro que deseas eliminar este prospecto?")) return;
             try {
-                const response = await fetch(`api.php?action=delete_lead&lead_id=${id}`, { method: 'POST' });
+                const response = await apiFetch(`api.php?action=delete_lead&lead_id=${id}`, { method: 'POST' });
                 const res = await response.json();
                 if (res.success) {
                     selectDomain(selectedDomain);
@@ -1533,7 +1603,7 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
             if (isHostinger) return;
             const btn = document.getElementById('run-scraper-btn');
             try {
-                const response = await fetch('api.php?action=toggle_scraper', { method: 'POST' });
+                const response = await apiFetch('api.php?action=toggle_scraper', { method: 'POST' });
                 const status = await response.json();
                 
                 isScrapingActive = status.active;
@@ -1554,7 +1624,7 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
         async function checkScraperStatus() {
             if (isHostinger) return;
             try {
-                const response = await fetch('api.php?action=scraper_status');
+                const response = await apiFetch('api.php?action=scraper_status');
                 const status = await response.json();
                 const btn = document.getElementById('run-scraper-btn');
                 isScrapingActive = status.active;

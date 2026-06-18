@@ -24,7 +24,7 @@ sys.path.append(base_dir)
 import config
 DB_PATH = config.DB_PATH
 
-def send_html_email_via_smtp(lead, smtp_server, smtp_port, smtp_user, smtp_password, custom_subject=None, custom_body=None):
+def send_html_email_via_smtp(lead, smtp_server, smtp_port, smtp_user, smtp_password, custom_subject=None, custom_body=None, test_recipient_email=None):
     """Redacta y envía el correo HTML con logo en línea (CID) mediante SMTP."""
     body = custom_body if custom_body is not None else lead['propuesta_texto']
     subject = custom_subject if custom_subject is not None else f"Oportunidad de adquisición de marca - {lead['dominio_venta']}"
@@ -141,7 +141,7 @@ def send_html_email_via_smtp(lead, smtp_server, smtp_port, smtp_user, smtp_passw
     </html>
     """
     
-    to_email = lead['correo'].split(', ')[0] if lead['correo'] else ""
+    to_email = test_recipient_email if test_recipient_email else (lead['correo'].split(', ')[0] if lead['correo'] else "")
     if not to_email:
         raise ValueError("El lead no tiene correo de contacto registrado.")
 
@@ -175,17 +175,25 @@ def send_html_email_via_smtp(lead, smtp_server, smtp_port, smtp_user, smtp_passw
             logger.warning(f"Error al adjuntar logo: {img_err}")
             
     # Enviar por SMTP
-    server = smtplib.SMTP(smtp_server, int(smtp_port))
-    server.starttls()
-    server.login(smtp_user, smtp_password)
-    server.sendmail(smtp_user, [to_email], msg.as_string())
-    server.quit()
+    try:
+        server = smtplib.SMTP(smtp_server, int(smtp_port))
+        server.starttls()
+        server.login(smtp_user, smtp_password)
+        server.sendmail(smtp_user, [to_email], msg.as_string())
+        server.quit()
+    except UnicodeEncodeError as e:
+        raise ValueError("Error de codificación en las credenciales SMTP. Asegúrate de que tu contraseña en el archivo .env no contenga caracteres especiales (como la 'ñ' en 'contraseña').")
+    except smtplib.SMTPAuthenticationError as e:
+        raise ValueError("Error de autenticación SMTP: Usuario o contraseña de aplicación incorrectos. Verifica tu configuración en el archivo .env.")
+    except Exception as e:
+        raise ValueError(f"Error al conectar/enviar vía SMTP: {str(e)}")
 
 def main():
     parser = argparse.ArgumentParser(description="Envío de correos por SMTP desde consola (PHP Hybrid Helper)")
     parser.add_argument("--lead_id", type=int, required=True, help="ID del lead a procesar")
     parser.add_argument("--subject", type=str, default=None, help="Asunto personalizado del correo")
     parser.add_argument("--body", type=str, default=None, help="Cuerpo personalizado del correo")
+    parser.add_argument("--test_recipient", type=str, default=None, help="Recipient email for testing purposes (overrides lead's email)")
     args = parser.parse_args()
 
     # Cargar datos SMTP desde variables de entorno
@@ -195,7 +203,11 @@ def main():
     smtp_password = os.environ.get("SMTP_PASSWORD")
 
     if not smtp_server or not smtp_port or not smtp_user or not smtp_password:
-        print(json.dumps({"success": False, "error": "Credenciales SMTP incompletas en variables de entorno / .env"}))
+        print(json.dumps({"success": False, "error": "Credenciales SMTP incompletas en el archivo .env."}))
+        sys.exit(1)
+
+    if "tu_contrase" in smtp_password or "tu_clave" in smtp_password or smtp_password == "tu_password_aqui":
+        print(json.dumps({"success": False, "error": "Las credenciales SMTP en el archivo .env son los valores por defecto (placeholders). Por favor, edita el archivo .env en el servidor con tu correo y contraseña de aplicación de Gmail reales para poder enviar correos."}))
         sys.exit(1)
 
     try:
@@ -226,7 +238,8 @@ def main():
             smtp_user=smtp_user,
             smtp_password=smtp_password,
             custom_subject=args.subject,
-            custom_body=args.body
+            custom_body=args.body,
+            test_recipient_email=args.test_recipient
         )
         
         # Actualizar estado a CONTACTADO en SQLite
@@ -237,7 +250,9 @@ def main():
         print(json.dumps({"success": True, "message": f"Correo enviado correctamente a {lead['correo']}."}))
         
     except Exception as e:
-        print(json.dumps({"success": False, "error": str(e)}))
+        import traceback
+        tb_str = traceback.format_exc()
+        print(json.dumps({"success": False, "error": str(e), "traceback": tb_str}))
         sys.exit(1)
 
 if __name__ == "__main__":
