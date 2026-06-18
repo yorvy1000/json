@@ -51,6 +51,10 @@ def main():
         (
             os.path.join(base_dir, "static", "logo.png"),
             "/home/u114856156/domains/mysmartdomains.com/public_html/static/logo.png"
+        ),
+        (
+            os.path.join(base_dir, "static", "logo.png"),
+            "/home/u114856156/agente_dominio/static/logo.png"
         )
     ]
     
@@ -69,7 +73,8 @@ def main():
         remote_dirs = [
             "/home/u114856156/domains/mysmartdomains.com/public_html/panel",
             "/home/u114856156/domains/mysmartdomains.com/public_html/static",
-            "/home/u114856156/agente_dominio"
+            "/home/u114856156/agente_dominio",
+            "/home/u114856156/agente_dominio/static"
         ]
         
         for rdir in remote_dirs:

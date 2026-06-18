@@ -176,10 +176,18 @@ def send_html_email_via_smtp(lead, smtp_server, smtp_port, smtp_user, smtp_passw
     
     # Adjuntar logo.png localmente usando CID
     logo_path = os.path.join(base_dir, 'static', 'logo.png')
-    # Intentar buscar logo alternativamente en la raíz de cgi-bin o public_html si se ejecuta desde web
+    # Rutas alternativas para buscar el logo en el servidor
+    fallback_paths = [
+        os.path.join(base_dir, 'logo.png'),
+        os.path.join(os.path.dirname(base_dir), 'domains', 'mysmartdomains.com', 'public_html', 'static', 'logo.png'),
+        os.path.join(base_dir, '..', 'domains', 'mysmartdomains.com', 'public_html', 'static', 'logo.png')
+    ]
     if not os.path.exists(logo_path):
-        logo_path = os.path.join(base_dir, 'logo.png') # fallbacks
-        
+        for fp in fallback_paths:
+            if os.path.exists(fp):
+                logo_path = fp
+                break
+                
     if os.path.exists(logo_path):
         try:
             with open(logo_path, 'rb') as f:
