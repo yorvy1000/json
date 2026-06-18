@@ -1022,6 +1022,10 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
                     <span class="stat-title">Leads Descartados</span>
                     <span id="stat-rejected-leads" class="stat-value" style="color: var(--status-rejected);">0</span>
                 </div>
+                <div class="stat-card">
+                    <span class="stat-title">Leads Leídos (👁️)</span>
+                    <span id="stat-read-leads" class="stat-value" style="color: #06b6d4;">0</span>
+                </div>
             </div>
 
             <!-- Dynamic Content Area -->
@@ -1159,6 +1163,7 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
                 document.getElementById('stat-pending-leads').textContent = stats.leads_pendiente || 0;
                 document.getElementById('stat-contacted-leads').textContent = stats.leads_contactado || 0;
                 document.getElementById('stat-rejected-leads').textContent = stats.leads_rechazado || 0;
+                document.getElementById('stat-read-leads').textContent = stats.leads_leidos || 0;
             } catch (err) {
                 console.error("Error al obtener estadísticas:", err);
             }
@@ -1330,7 +1335,10 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
                                             `<span style="color: var(--status-pending); font-size: 0.85rem; font-style: italic;">Sin Sitio Web Registrado</span>`
                                         }
                                     </div>
-                                    ${isSent ? `<span class="sent-indicator">PROPUESTA ENVIADA</span>` : ''}
+                                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                        ${lead.leido == 1 ? `<span class="read-indicator" style="background-color: rgba(6, 182, 212, 0.15); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.3); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 0.375rem;">👁️ LEÍDO</span>` : ''}
+                                        ${isSent ? `<span class="sent-indicator">PROPUESTA ENVIADA</span>` : ''}
+                                    </div>
                                 </div>
 
                                 <div class="lead-contacts">
@@ -1377,7 +1385,7 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
                 }
 
                 panel.innerHTML = `
-                    <div class="domain-detail-header">
+                    <div class="domain-detail-header" style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
                         <div class="domain-title-section">
                             <h2>${domainName}</h2>
                             <div class="domain-detail-meta">
@@ -1385,6 +1393,11 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
                                 <span>Antigüedad: <strong>${safeInfo.ano_registro || 'N/A'}</strong></span>
                                 <span>Score: <strong>${safeInfo.score || 'N/A'}</strong></span>
                             </div>
+                        </div>
+                        <div>
+                            <button class="btn" style="background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 12px rgba(16,185,129,0.2); font-size: 0.85rem; padding: 0.5rem 1rem;" onclick="sendDomainPending('${domainName}')">
+                                Enviar Pendientes de este Dominio (Auto)
+                            </button>
                         </div>
                     </div>
                     ${leadsHTML}
@@ -1443,6 +1456,27 @@ $is_hostinger = (strpos($_SERVER['HTTP_HOST'], 'mysmartdomains.com') !== false |
                 loadDashboard();
             } catch (err) {
                 alert("Error de red al intentar conectar con el servidor SMTP.");
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        async function sendDomainPending(domainName) {
+            if (!confirm(`¿Deseas enviar en AUTOMÁTICO todas las propuestas PENDIENTES del dominio ${domainName}?`)) return;
+            
+            const btn = document.querySelector(`button[onclick="sendDomainPending('${domainName}')"]`);
+            const originalText = btn.textContent;
+            btn.textContent = "Enviando...";
+            btn.disabled = true;
+            
+            try {
+                const response = await apiFetch(`api.php?action=send_all_pending&domain=${encodeURIComponent(domainName)}`, { method: 'POST' });
+                const res = await response.json();
+                alert(res.message);
+                loadDashboard();
+            } catch (err) {
+                alert("Error de red al intentar conectar con el servidor.");
             } finally {
                 btn.textContent = originalText;
                 btn.disabled = false;

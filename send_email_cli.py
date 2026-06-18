@@ -25,6 +25,34 @@ import config
 DB_PATH = config.DB_PATH
 
 import subprocess
+import re
+
+def clean_email(email):
+    email = email.strip().lower()
+    # Eliminar texto basura pegado al final (errores de concatenación del scraper)
+    garbage_suffixes = [
+        "business", "editorial", "data", "audience", "magazine", 
+        "time", "advertising", "marketing", "work", "social", 
+        "for", "general", "press", "media", "sales"
+    ]
+    for suffix in garbage_suffixes:
+        if email.endswith(suffix):
+            email = email[:-len(suffix)]
+    return email
+
+def get_valid_emails_list(emails_string):
+    if not emails_string:
+        return []
+    # Separar por comas, espacios u otros delimitadores
+    raw_emails = re.split(r'[,;|\s]+', emails_string)
+    valid_emails = []
+    for raw in raw_emails:
+        match = re.search(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', raw)
+        if match:
+            clean = clean_email(match.group(0))
+            if clean and clean not in valid_emails:
+                valid_emails.append(clean)
+    return valid_emails
 
 def send_email_via_local_sendmail(msg, to_email):
     """Envía el correo usando el comando local sendmail del servidor (fallback sin SMTP)."""
@@ -153,20 +181,26 @@ def send_html_email_via_smtp(lead, smtp_server, smtp_port, smtp_user, smtp_passw
                     Catálogo oficial: <a href="https://mysmartdomains.com/" target="_blank">mysmartdomains.com</a>
                 </div>
             </div>
+            <!-- Tracking Pixel -->
+            <img src="https://mysmartdomains.com/panel/api.php?action=track_open&lead_id={lead['id']}" width="1" height="1" style="display:none; width:0; height:0; border:0;">
         </div>
     </body>
     </html>
     """
     
-    to_email = test_recipient_email if test_recipient_email else (lead['correo'].split(', ')[0] if lead['correo'] else "")
-    if not to_email:
-        raise ValueError("El lead no tiene correo de contacto registrado.")
+    valid_recipients = get_valid_emails_list(test_recipient_email if test_recipient_email else lead['correo'])
+    if not valid_recipients:
+        raise ValueError("El lead no tiene correos de contacto válidos registrados.")
+        
+    # Limitar a máximo 3 destinatarios en el "To" para evitar bloqueos por spam
+    recipients_to_send = valid_recipients[:3]
+    to_header_val = ", ".join(recipients_to_send)
 
     # Configurar MIME con soporte para adjuntos en línea (relacionados)
     msg = MIMEMultipart('related')
     msg['Subject'] = Header(subject, 'utf-8')
     msg['From'] = f"Vibra Deals <{smtp_user}>"
-    msg['To'] = to_email
+    msg['To'] = to_header_val
     
     msg_alternative = MIMEMultipart('alternative')
     msg.attach(msg_alternative)
@@ -223,7 +257,7 @@ def send_html_email_via_smtp(lead, smtp_server, smtp_port, smtp_user, smtp_passw
             server.starttls()
             
         server.login(smtp_user, smtp_password)
-        server.sendmail(smtp_user, [to_email], msg.as_string())
+        server.sendmail(smtp_user, recipients_to_send, msg.as_string())
         server.quit()
         logger.info("Correo enviado exitosamente vía SMTP.")
     except Exception as smtp_err:

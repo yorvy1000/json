@@ -13,11 +13,14 @@ session_start();
 header('Content-Type: text/plain; charset=utf-8');
 header('Cache-Control: no-cache, no-store, must-revalidate');
 
-// Validar inicio de sesion
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    http_response_code(401);
-    echo json_encode(["success" => false, "error" => "Sesion no valida. Por favor recarga la pagina e inicia sesion de nuevo."]);
-    exit;
+// Validar inicio de sesion (excluir track_open de la autenticacion)
+$action = isset($_GET['action']) ? $_GET['action'] : '';
+if ($action !== 'track_open') {
+    if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+        http_response_code(401);
+        echo json_encode(["success" => false, "error" => "Sesion no valida. Por favor recarga la pagina e inicia sesion de nuevo."]);
+        exit;
+    }
 }
 
 // Array para capturar logs de errores
@@ -109,6 +112,26 @@ try {
     $action = isset($_GET['action']) ? $_GET['action'] : '';
 
     switch ($action) {
+    case 'track_open':
+        $lead_id = isset($_GET['lead_id']) ? (int)$_GET['lead_id'] : 0;
+        if ($lead_id > 0) {
+            try {
+                // Actualizar estado de lectura en SQLite
+                $stmt = $db->prepare("UPDATE clientes SET leido = 1 WHERE id = ?");
+                $stmt->execute([$lead_id]);
+            } catch (Exception $e) {
+                error_log("API: Error in track_open: " . $e->getMessage());
+            }
+        }
+        
+        // Retornar una imagen GIF transparente de 1x1 pixel
+        header('Content-Type: image/gif');
+        header('Cache-Control: no-cache, no-store, must-revalidate');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+        echo base64_decode('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+        exit;
+
     case 'get_stats':
         try {
             // Contar dominios en total
@@ -118,11 +141,15 @@ try {
             $stmt = $db->query("SELECT estado, COUNT(*) as qty FROM clientes GROUP BY estado");
             $rows = $stmt->fetchAll();
             
+            // Contar leads leídos
+            $total_leidos = $db->query("SELECT COUNT(*) FROM clientes WHERE leido = 1")->fetchColumn();
+
             $stats = [
                 "total_dominios_venta" => (int)$total_dominios,
                 "leads_pendiente" => 0,
                 "leads_contactado" => 0,
-                "leads_rechazado" => 0
+                "leads_rechazado" => 0,
+                "leads_leidos" => (int)$total_leidos
             ];
             
             foreach ($rows as $row) {
@@ -282,9 +309,14 @@ try {
         break;
 
     case 'send_all_pending':
+        $domain = isset($_GET['domain']) ? $_GET['domain'] : '';
         try {
-            // Buscar todos los leads pendientes que tienen correo electrónico
-            $stmt = $db->query("SELECT id FROM clientes WHERE estado = 'PENDIENTE' AND correo IS NOT NULL AND correo != ''");
+            if (!empty($domain)) {
+                $stmt = $db->prepare("SELECT id FROM clientes WHERE estado = 'PENDIENTE' AND dominio_venta = ? AND correo IS NOT NULL AND correo != ''");
+                $stmt->execute([$domain]);
+            } else {
+                $stmt = $db->query("SELECT id FROM clientes WHERE estado = 'PENDIENTE' AND correo IS NOT NULL AND correo != ''");
+            }
             $leads = $stmt->fetchAll();
             
             $sent_count = 0;
