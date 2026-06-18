@@ -24,6 +24,23 @@ sys.path.append(base_dir)
 import config
 DB_PATH = config.DB_PATH
 
+import subprocess
+
+def send_email_via_local_sendmail(msg, to_email):
+    """Envía el correo usando el comando local sendmail del servidor (fallback sin SMTP)."""
+    # Intentar buscar el ejecutable en rutas comunes
+    sendmail_paths = ["/usr/sbin/sendmail", "/usr/lib/sendmail", "sendmail"]
+    for path in sendmail_paths:
+        try:
+            p = subprocess.Popen([path, "-t", "-oi"], stdin=subprocess.PIPE, universal_newlines=True)
+            p.communicate(msg.as_string())
+            if p.returncode == 0:
+                logger.info(f"Correo enviado exitosamente usando sendmail local ({path}).")
+                return True
+        except Exception as e:
+            logger.warning(f"Fallo al intentar usar sendmail en la ruta {path}: {e}")
+    return False
+
 def send_html_email_via_smtp(lead, smtp_server, smtp_port, smtp_user, smtp_password, custom_subject=None, custom_body=None, test_recipient_email=None):
     """Redacta y envía el correo HTML con logo en línea (CID) mediante SMTP."""
     body = custom_body if custom_body is not None else lead['propuesta_texto']
@@ -174,6 +191,20 @@ def send_html_email_via_smtp(lead, smtp_server, smtp_port, smtp_user, smtp_passw
         except Exception as img_err:
             logger.warning(f"Error al adjuntar logo: {img_err}")
             
+    # Determinar si tenemos credenciales SMTP válidas configuradas
+    has_smtp = (smtp_server and smtp_port and smtp_user and smtp_password and 
+                "tu_contrase" not in smtp_password and 
+                "tu_clave" not in smtp_password and 
+                smtp_password != "tu_password_aqui")
+    
+    if not has_smtp:
+        logger.info("Credenciales SMTP no configuradas o con valores por defecto. Intentando enviar vía sendmail nativo del servidor...")
+        if send_email_via_local_sendmail(msg, to_email):
+            logger.info("Envío nativo sendmail exitoso.")
+            return
+        else:
+            raise ValueError("Las credenciales SMTP en el archivo .env no están configuradas y el envío nativo a través de sendmail falló. Por favor edita tu archivo .env.")
+            
     # Enviar por SMTP
     try:
         server = smtplib.SMTP(smtp_server, int(smtp_port))
@@ -181,12 +212,20 @@ def send_html_email_via_smtp(lead, smtp_server, smtp_port, smtp_user, smtp_passw
         server.login(smtp_user, smtp_password)
         server.sendmail(smtp_user, [to_email], msg.as_string())
         server.quit()
-    except UnicodeEncodeError as e:
-        raise ValueError("Error de codificación en las credenciales SMTP. Asegúrate de que tu contraseña en el archivo .env no contenga caracteres especiales (como la 'ñ' en 'contraseña').")
-    except smtplib.SMTPAuthenticationError as e:
-        raise ValueError("Error de autenticación SMTP: Usuario o contraseña de aplicación incorrectos. Verifica tu configuración en el archivo .env.")
-    except Exception as e:
-        raise ValueError(f"Error al conectar/enviar vía SMTP: {str(e)}")
+        logger.info("Correo enviado exitosamente vía SMTP.")
+    except Exception as smtp_err:
+        logger.warning(f"Fallo al enviar vía SMTP ({smtp_err}). Intentando fallback con sendmail nativo del servidor...")
+        if send_email_via_local_sendmail(msg, to_email):
+            logger.info("Envío nativo sendmail exitoso (fallback).")
+            return
+            
+        # Si también falla sendmail, levantar el error original de SMTP formateado de manera amigable
+        if isinstance(smtp_err, UnicodeEncodeError):
+            raise ValueError("Error de codificación en las credenciales SMTP. Asegúrate de que tu contraseña en el archivo .env no contenga caracteres especiales (como la 'ñ' en 'contraseña').")
+        elif isinstance(smtp_err, smtplib.SMTPAuthenticationError):
+            raise ValueError("Error de autenticación SMTP: Usuario o contraseña de aplicación incorrectos. Verifica tu configuración en el archivo .env.")
+        else:
+            raise ValueError(f"Error al conectar/enviar vía SMTP: {str(smtp_err)} (y también falló el fallback nativo de sendmail).")
 
 def main():
     parser = argparse.ArgumentParser(description="Envío de correos por SMTP desde consola (PHP Hybrid Helper)")
@@ -202,17 +241,11 @@ def main():
     smtp_user = os.environ.get("SMTP_USER") or os.environ.get("SMTP_EMAIL")
     smtp_password = os.environ.get("SMTP_PASSWORD")
 
-    if not smtp_server or not smtp_port or not smtp_user or not smtp_password:
-        print(json.dumps({"success": False, "error": "Credenciales SMTP incompletas en el archivo .env."}))
-        sys.exit(1)
-
-    if "tu_contrase" in smtp_password or "tu_clave" in smtp_password or smtp_password == "tu_password_aqui":
-        print(json.dumps({"success": False, "error": "Las credenciales SMTP en el archivo .env son los valores por defecto (placeholders). Por favor, edita el archivo .env en el servidor con tu correo y contraseña de aplicación de Gmail reales para poder enviar correos."}))
-        sys.exit(1)
+    # Las comprobaciones y fallbacks se realizan dentro de send_html_email_via_smtp
 
     try:
-        # Abrir base de datos SQLite
-        conn = sqlite3.connect(DB_PATH)
+        # Abrir base de datos SQLite con timeout de 30s para evitar bloqueos
+        conn = sqlite3.connect(DB_PATH, timeout=30.0)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         
@@ -242,9 +275,10 @@ def main():
             test_recipient_email=args.test_recipient
         )
         
-        # Actualizar estado a CONTACTADO en SQLite
-        cursor.execute("UPDATE clientes SET estado = 'CONTACTADO' WHERE id = ?", (args.lead_id,))
-        conn.commit()
+        # Actualizar estado a CONTACTADO en SQLite solo si no es un correo de prueba
+        if not args.test_recipient:
+            cursor.execute("UPDATE clientes SET estado = 'CONTACTADO' WHERE id = ?", (args.lead_id,))
+            conn.commit()
         conn.close()
         
         print(json.dumps({"success": True, "message": f"Correo enviado correctamente a {lead['correo']}."}))
